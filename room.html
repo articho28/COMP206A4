@@ -1,12 +1,69 @@
 <html>
 	<head>
 		<title>Dan's and Arty's Room</title>
+		
+		<style type="text/css">
+			body {background-color: #CCCCCC}
+			#center {position: relative; top: 20px;}
+		</style>
 	</head>
-
+	
 	<body>
-		This is our room.
-		<b>You bout to die</b>
+		
+	<!-- This is the image -->	
+	<center><img src="http://www.brandonhall.com/blogs/wp-content/uploads/2013/09/classroom-1.jpg" width="666" height="500"></center>		
+	
+	<!-- This is the header -->
+	<hr/>
+		<center>
+		<h1 title="This is the best room.">This is the math room.</h1>
+		<h2> You may enter: DROP, EXIT, PLAY, REFRESH </h2>
+	<hr/>
+	
+	
+	<!-- This is the North button -->
+	<center>
+		<form action="transporter.py" method="get">
+			<input type="submit" title="You will move into the northern room." value="North">	
+			<input type="hidden" name="inventory" value="5,0">
+			<input type="hidden" name="URL" value="http://www.cs.mcgill.ca/~dvanac">
+		</form>
+	</center>
+
+	<!-- This is the West button, East button, textbox, and submit button. -->
+	<center>
+		<form action="cgi-bin/transporter.py" method="get" style="display: inline;">
+			<input type="submit" value="West">
+			<input type="hidden" name="inventory" value="5,0">
+			<input type="hidden" name="URL" value="http://www.cs.mcgill.ca/~dvanac">
+		</form>
+
+		<form action="cgi-bin/a.out.cgi" method="get" style="display: inline;">
+			<input type="text" name="input">
+			<input type="submit" name="submit">
+		</form>
+
+		<form action="cgi-bin/transporter.py" method="get" style="display: inline;">
+			<input type="submit" value="East">			
+			<input type="hidden" name="inventory" value="5,0">
+			<input type="hidden" name="URL" value="http://www.cs.mcgill.ca/~dvanac">
+		</form>
+	</center>
+
+	<!-- This is the South button -->
+	<center>
+		<div id="center">
+		<form action="cgi-bin/transporter.py" method="get">
+			<input type="submit" value="South">	
+			<input type="hidden" name="inventory" value="5,0">
+			<input type="hidden" name="URL" value="http://www.cs.mcgill.ca/~dvanac">
+		</form>
+		</div>
+	</center>
+
+
 	</body>
+
 </html>
 
 
