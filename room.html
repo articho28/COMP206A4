@@ -23,8 +23,8 @@
 	
 	<!-- This is the North button -->
 	<center>
-		<form action="transporter.py" method="get">
-			<input type="submit" title="You will move into the northern room." value="North">	
+		<form action="cgi-bin/a.out.cgi" method="get">
+			<input type="submit" name="input" value="North">	
 			<input type="hidden" name="inventory" value="5,0">
 			<input type="hidden" name="URL" value="http://www.cs.mcgill.ca/~dvanac">
 		</form>
@@ -40,7 +40,8 @@
 
 		<form action="cgi-bin/a.out.cgi" method="get" style="display: inline;">
 			<input type="text" name="input">
-			<input type="submit" name="submit">
+			<input type="submit" value="submit">
+			<input type="hidden" name="inventory" value="5,0">
 		</form>
 
 		<form action="cgi-bin/transporter.py" method="get" style="display: inline;">
