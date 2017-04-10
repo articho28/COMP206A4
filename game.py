@@ -95,6 +95,7 @@ elif tries == "3":
 		</form>""" % (inventory, term)
 	print box
 elif tries == "2":
+	#Print the head of head of the document.
 	first_round_completed = """ <html>
 		<head>
 			<title>Dan's and Arty's Room</title>
@@ -119,12 +120,23 @@ elif tries == "2":
 		<hr/> """ 
 	print first_round_completed
 
-	
+	#Interpret the input
 	previous_term = form["term"].value
 	given_answer = form["input"].value
 	real_answer = fib(int(previous_term))
+
+	if given_answer == "QUIT":
+		print "<h1> Sorry to see you go. Come back soon! </h1>"
+
+		box = """<form action="/cgi-bin/game.py" method="get" style="display: inline;">
+				<input type="hidden" name="command" value="REFRESH">
+				<input type="hidden" name="inventory" value="%s">
+				<input type="submit" value="Return to Main Menu">
+
+			</form>""" % (inventory)
+		print box
 	
-	if int(given_answer) == int(real_answer):
+	elif int(given_answer) == int(real_answer):
 		print "<h2> Good job, you guessed right! Guess correctly twice more and you win! </h2>"
 		second_term = randint(1,12)
 		print "<h2> Guess the number %d of the Fibonnaci Sequence" % (second_term)
@@ -177,7 +189,18 @@ elif tries == "1":
 	second_given_answer = form["input"].value
 	second_real_answer = fib(int(before_last_term))
 
-	if int(second_given_answer) == int(second_real_answer):
+	if second_given_answer == "QUIT":
+		print "<h1> Sorry to see you go. Come back soon! </h1>"
+
+		box = """<form action="/cgi-bin/game.py" method="get" style="display: inline;">
+				<input type="hidden" name="command" value="REFRESH">
+				<input type="hidden" name="inventory" value="%s">
+				<input type="submit" value="Return to Main Menu">
+
+			</form>""" % (inventory)
+		print box
+
+	elif int(second_given_answer) == int(second_real_answer):
 
 		print "<h2> Good job, you guessed right! Guess correctly once more and you win! </h2>"
 		third_term = randint(7,12)
@@ -223,20 +246,46 @@ elif tries == "0":
 			 </h2>
 		<hr/> """ 
 	print win_screen
-	print """<h1>Congratulations! You have WON! Enter the amount of mana and gold you want in the following format
-	and without spaces:
-		"mana,gold"  </h1>"""
+	last_term = form["term"].value
+	third_given_answer = form["input"].value
+	third_real_answer = fib(int(last_term))
+	
+	if third_given_answer == "QUIT":
+		print "<h1> Sorry to see you go. Come back soon! </h1>"
+
+		box = """<form action="/cgi-bin/game.py" method="get" style="display: inline;">
+				<input type="hidden" name="command" value="REFRESH">
+				<input type="hidden" name="inventory" value="%s">
+				<input type="submit" value="Return to Main Menu">
+
+			</form>""" % (inventory)
+		print box
+
+	elif int(third_given_answer) == int(third_real_answer):
+
+		print """<h1>Congratulations! You have WON! Enter the amount of mana and gold you want in the following format
+		and without spaces:
+			"mana,gold". You can take up to 5 units. </h1>"""
 	
 
 
-	reward_box = """<form action="/cgi-bin/game.py" method="get" style="display: inline;">
-				<input type="text" name="input">
-				<input type="hidden" name="inventory" value="%s">
-				<input type="submit" value="Submit to Receive!">
-				<input type="hidden" name="tries" value="-1">
+		reward_box = """<form action="/cgi-bin/game.py" method="get" style="display: inline;">
+					<input type="text" name="input">
+					<input type="hidden" name="inventory" value="%s">
+					<input type="submit" value="Submit to Receive!">
+					<input type="hidden" name="tries" value="-1">
 
-			</form>""" % (inventory)
-	print reward_box
+				</form>""" % (inventory)
+		print reward_box
+	else:
+		print "<h2> Sorry, you guessed wrong :( Click on submit to return to the main menu.</h2>"
+		return_box = """<form action="/cgi-bin/a.out.cgi" method="get" style="display: inline;">
+			<input type="hidden" name="inventory" value="5,0">
+			<input type="hidden" name="command" value="refresh">
+			<input type="submit" value="submit">
+		</form>""" 
+		print return_box
+
 elif tries == "-1":
 	final_screen = """ <html>
 		<head>
