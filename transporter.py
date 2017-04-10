@@ -4,12 +4,15 @@ import sys
 import cgi
 import csv
 
-#print "Content-type: text/html\r\n\r\n"
-URL = "http://cs.mcgill.ca/~dmarci1/cgi-bin/a.out"
+print "Content-type: text/html\r\n\r\n"
 form = cgi.FieldStorage()
+URL = form["URL"].value
 #We store the inventory of the incoming player
 inventory = form["inventory"].value
-#Parse the inventory
+
+print URL
+print inventory
+'''#Parse the inventory
 list = inventory.split(',')
 playerMana = int(list[0])
 playerGold = int(list[1])
